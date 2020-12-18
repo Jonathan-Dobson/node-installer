@@ -3,7 +3,8 @@ A shell script to quickly download and install the latest version of nodejs for 
 
 
 ```
-wget https://fromjdobson.github.io/node-installer/install-node.sh \
-sudo chmod +x install-node.sh \
-./install-node.sh
+wget https://fromjdobson.github.io/node-installer/install-node.sh &&
+sudo chmod +x install-node.sh &&
+./install-node.sh &&
+rm ./install-node.sh
 ```
