@@ -6,7 +6,7 @@ OS='linux'
 ARCH='x64'
 
 #advanced configuration
-DOWNLOAD='https://odejs.org/dist/latest/'
+DOWNLOAD='https://nodejs.org/dist/latest/'
 TAR='tar.xz'
 
 #
