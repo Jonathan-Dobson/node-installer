@@ -8,6 +8,7 @@ ARCH='x64'
 #advanced configuration
 DOWNLOAD='https://nodejs.org/dist/latest/'
 TAR='tar.xz'
+BIN='/usr/local/bin/'
 
 #
 PKGNAME='/node-v.*-'$OS'-'$ARCH'.'$TAR'/p'
@@ -53,11 +54,12 @@ remove_tmp(){
 	return $?
 }
 make_symlinks(){
+	NODELIB=$INSTALLDIR''$NODE'/bin/'
 	echo 'updating binary symbolic links' && \
-	rm /usr/local/bin/node /usr/local/bin/npm /usr/local/bin/npx && \
-	ln -s /usr/local/lib/nodejs/node-v15.4.0-linux-x64/bin/node /usr/local/bin/node && \
-	ln -s /usr/local/lib/nodejs/node-v15.4.0-linux-x64/bin/npx /usr/local/bin/npx && \
-	ln -s /usr/local/lib/nodejs/node-v15.4.0-linux-x64/bin/npm /usr/local/bin/npm&& \
+	rm $BIN'node' $BIN'npm' $BIN'npx'
+	ln -s $NODELIB'node' $BIN'node' && \
+	ln -s $NODELIB'npx' $BIN'npx' && \
+	ln -s $NODELIB'npm' $BIN'npm' && \
 	return $?
 }
 verify_install(){
@@ -78,6 +80,7 @@ download && \
 check_download && \
 make_install_dir && \
 extract_download && \
+make_symlinks && \
 verify_install && \
 install_complete
 [ $? -eq 1 ] && echo 'Installation Aborted'
